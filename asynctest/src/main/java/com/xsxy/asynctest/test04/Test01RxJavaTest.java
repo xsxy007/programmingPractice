@@ -1,5 +1,7 @@
 package com.xsxy.asynctest.test04;
 
+import io.reactivex.Flowable;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -14,22 +16,37 @@ import java.util.List;
 public class Test01RxJavaTest {
 
     public static void main(String[] args) {
-
+        java8Pring();
+        rxjavaPrint();
     }
 
     /**
      * 以java8stream的方式输出大于5岁的person的name
      */
-    public static void java8Pring(){
-
+    public static void java8Pring() {
+        System.out.println("java8stream");
+        List<Person> personList = makeList();
+        personList.stream().filter(person -> person.age > 5)
+                .map(Person::getName)
+                .forEach(System.out::println);
     }
+
     /**
-     * 以的方式输出大于5岁的person的name
+     * 以rxjava的方式输出大于5岁的person的name
      */
-    public static void rxjavaPrint(){
+    public static void rxjavaPrint() {
+        System.out.println("rxJava");
+        List<Person> personList = makeList();
+        // 转换列表
+        Flowable.fromArray(personList.toArray(new Person[0]))
+                // 过滤
+                .filter(person -> person.age > 5)
+                // 映射转换
+                .map(Person::getName)
+                // 订阅输出
+                .subscribe(System.out::println);
 
     }
-
 
     public static List<Person> makeList() {
         List<Person> list = new ArrayList<>();
