@@ -2,18 +2,17 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
-
-    <groupId>com.xsxy</groupId>
-    <artifactId>asynctest</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
-    <name>asynctest</name>
-    <description>异步编程练习</description>
-
     <parent>
         <artifactId>programmingPractice</artifactId>
         <groupId>com.xsxy</groupId>
         <version>0.0.1-SNAPSHOT</version>
     </parent>
+
+    <groupId>com.xsxy</groupId>
+    <artifactId>webflux-test</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
+    <name>webflux-test</name>
+    <description>Demo project for Spring Boot</description>
 
     <properties>
         <java.version>1.8</java.version>
@@ -22,33 +21,8 @@
     <dependencies>
         <dependency>
             <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
-
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-test</artifactId>
-            <scope>test</scope>
-            <exclusions>
-                <exclusion>
-                    <groupId>org.junit.vintage</groupId>
-                    <artifactId>junit-vintage-engine</artifactId>
-                </exclusion>
-            </exclusions>
-        </dependency>
-
-        <!--rxjava2 依赖 begin-->
-        <dependency>
-            <groupId>io.reactivex.rxjava2</groupId>
-            <artifactId>rxjava</artifactId>
-            <version>2.2.10</version>
-        </dependency>
-        <!--rxjava2 依赖 end-->
-
         <!--reactor 依赖 begin-->
         <dependency>
             <groupId>io.projectreactor</groupId>
@@ -61,6 +35,30 @@
             <scope>test</scope>
         </dependency>
         <!--reactor 依赖 end-->
+
+        <!-- 可以使用webflux来实现，但是引入weflux依赖默认使用的容器时jetty，
+        另一种实现方式，是依赖web，手动依赖reactory-core 依赖
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-webflux</artifactId>
+        </dependency>-->
+
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-test</artifactId>
+            <scope>test</scope>
+            <exclusions>
+                <exclusion>
+                    <groupId>org.junit.vintage</groupId>
+                    <artifactId>junit-vintage-engine</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+        <dependency>
+            <groupId>io.projectreactor</groupId>
+            <artifactId>reactor-test</artifactId>
+            <scope>test</scope>
+        </dependency>
     </dependencies>
 
     <!--reactor 依赖 begin-->
@@ -76,7 +74,6 @@
         </dependencies>
     </dependencyManagement>
     <!--reactor 依赖 end-->
-
 
     <build>
         <plugins>

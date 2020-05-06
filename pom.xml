@@ -18,6 +18,7 @@
 
     <modules>
         <module>asynctest</module>
+        <module>webflux-test</module>
     </modules>
 
 </project>
