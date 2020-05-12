@@ -19,6 +19,7 @@
     <modules>
         <module>asynctest</module>
         <module>webflux-test</module>
+        <module>javafxPractice</module>
     </modules>
 
 </project>
